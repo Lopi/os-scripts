@@ -34,8 +34,8 @@ fi
 
 
 
-keyboardlayout="gb"         # Great Britain
-timezone="Europe/London"    # London, Europe
+keyboardlayout="us"         # Great Britain
+timezone="America/Chicago"    # London, Europe
 
 
 
@@ -190,7 +190,7 @@ if [ ! -z "$keyboardlayout" ]; then
   #dpkg-reconfigure keyboard-configuration   #dpkg-reconfigure console-setup                                           #<--- Doesn't automate
 fi
 #--- Changing time zone
-[[ -z "$timezone" ]] || ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime   # London, Europe   #ln -sf /usr/share/zoneinfo/Etc/GMT
+[[ -z "$timezone" ]] || ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime   # London, Europe   #ln -sf /usr/share/zoneinfo/Etc/GMT
 #--- Installing ntp to help keep time in sync (helpful when resuming VMs)
 apt-get -y -qq install ntp
 #--- Start service
