@@ -1188,6 +1188,20 @@ ssh-keygen -b 4096 -t rsa -f /root/.ssh/id_rsa -P ""
 #--- Enable ssh at startup
 #update-rc.d -f ssh defaults
 
+##### Setting up idb (iOS pentesting)
+##### https://github.com/dmayer/idb
+echo -e "\e[01;32m[+]\e[00m Setting up idb (iOS pentesting)"
+cd ~/
+apt-get install cmake libqt4-dev git-core libimobiledevice-utils libplist-utils usbmuxd libsqlite3-dev -y
+curl -L https://get.rvm.io | bash -s -- --ignore-dotfiles --autolibs=0 --ruby
+source /usr/local/rvm/scripts/rvm
+touch ~/.gemrc
+echo ":ssl_verify_mode: 0" >> ~/.gemrc # SSL inspection on corporate networks
+git clone https://github.com/dmayer/idb
+cd ~/idb
+rvm use --enable-shared
+gem install idb
+
 
 ##### Cleaning the system
 echo -e "\e[01;32m[+]\e[00m Cleaning the system"
