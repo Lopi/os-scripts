@@ -1,6 +1,6 @@
 #!/bin/bash
 #-Metadata----------------------------------------------#
-#  Filename: kali.sh         (Last update: 2014-10-09)  #
+#  Filename: kali.sh         (Last update: 12-16-2014)  #
 #-Info--------------------------------------------------#
 #  Personal post install script for Kali Linux.         #
 #-Author(s)---------------------------------------------#
@@ -28,14 +28,14 @@
 
 if [ 1 -eq 0 ]; then        # This is never true, thus it acts as block comments ;)
 ############ One liner - Pull the latest version and execute! ###########
-wget -qO- https://raw.github.com/g0tmi1k/os-scripts/master/kali.sh | bash
+wget -qO- https://raw.github.com/Lopi/os-scripts/master/kali.sh | bash
 #########################################################################
 fi
 
 
 
-keyboardlayout="us"         # Great Britain
-timezone="America/Chicago"    # London, Europe
+keyboardlayout="us"         # United States
+timezone="America/Chicago"    # America, Chicago
 
 
 
@@ -1186,21 +1186,22 @@ ssh-keygen -b 1024 -t dsa -f /etc/ssh/ssh_host_dsa_key -P ""
 ssh-keygen -b 521 -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -P ""
 ssh-keygen -b 4096 -t rsa -f /root/.ssh/id_rsa -P ""
 #--- Enable ssh at startup
-#update-rc.d -f ssh defaults
+sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+update-rc.d -f ssh defaults
 
 ##### Setting up idb (iOS pentesting)
 ##### https://github.com/dmayer/idb
-echo -e "\e[01;32m[+]\e[00m Setting up idb (iOS pentesting)"
-cd ~/
-apt-get install cmake libqt4-dev git-core libimobiledevice-utils libplist-utils usbmuxd libsqlite3-dev -y
-curl -L https://get.rvm.io | bash -s -- --ignore-dotfiles --autolibs=0 --ruby
-source /usr/local/rvm/scripts/rvm
-touch ~/.gemrc
-echo ":ssl_verify_mode: 0" >> ~/.gemrc # SSL inspection on corporate networks
-git clone https://github.com/dmayer/idb
-cd ~/idb
-rvm use --enable-shared
-gem install idb
+#echo -e "\e[01;32m[+]\e[00m Setting up idb (iOS pentesting)"
+#cd ~/
+#apt-get install cmake libqt4-dev git-core libimobiledevice-utils libplist-utils usbmuxd libsqlite3-dev -y
+#curl -L https://get.rvm.io | bash -s -- --ignore-dotfiles --autolibs=0 --ruby
+#source /usr/local/rvm/scripts/rvm
+#touch ~/.gemrc
+#echo ":ssl_verify_mode: 0" >> ~/.gemrc # SSL inspection on corporate networks
+#git clone https://github.com/dmayer/idb
+#cd ~/idb
+#rvm use --enable-shared
+#gem install idb
 
 
 ##### Cleaning the system
