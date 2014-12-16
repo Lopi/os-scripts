@@ -104,7 +104,7 @@ if [[ ! -z $_vmdetect ]]; then
     cd - &>/dev/null
     umount /mnt/cdrom
   else                                             # Fall back is 'open vm tools' ~ http://open-vm-tools.sourceforge.net/about.php
-    #echo -e "\e[01;31m[!]\e[00m VMware Tools CD/ISO isn't mounted. Skipping 'native' VMware tools, failing back to 'Open VM Tools' instead"
+    echo -e "\e[01;31m[!]\e[00m VMware Tools CD/ISO isn't mounted. Skipping 'native' VMware tools, failing back to 'Open VM Tools' instead"
     #apt-get -y -qq install open-vm-toolbox
   fi
 fi
