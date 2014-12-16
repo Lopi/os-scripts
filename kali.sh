@@ -167,7 +167,7 @@ chattr +i $file 2>/dev/null
 if [ 1 -eq 0 ]; then        # This is never true, thus it acts as block comments ;)
 ##### Updating hostname (but not domain name)
 echo -e "\e[01;32m[+]\e[00m Updating hostname"
-hostname="kali"
+hostname="pentest-stage"
 #--- Change it now
 hostname "$hostname"
 #--- Make sure it sticks after reboot
