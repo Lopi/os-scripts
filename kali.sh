@@ -159,7 +159,7 @@ chattr -i $file 2>/dev/null
 #--- Use OpenDNS DNS
 #echo -e 'nameserver 208.67.222.222\nnameserver 208.67.220.220' > $file
 #--- Use Google DNS
-echo -e 'nameserver 8.8.8.8\nnameserver 8.8.4.4' > $file
+#echo -e 'nameserver 8.8.8.8\nnameserver 8.8.4.4' > $file
 #--- Protect it
 chattr +i $file 2>/dev/null
 
