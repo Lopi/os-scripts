@@ -215,15 +215,15 @@ apt-get update && apt-get -y -q dist-upgrade --fix-missing
 
 
 ##### Fixing audio issues
-echo -e "\e[01;32m[+]\e[00m Fixing audio issues"
+#echo -e "\e[01;32m[+]\e[00m Fixing audio issues"
 #--- PulseAudio warnings
 #file=/etc/default/pulseaudio; [ -e $file ] && cp -n $file{,.bkup}
 #sed -i 's/^PULSEAUDIO_SYSTEM_START=.*/PULSEAUDIO_SYSTEM_START=1/' $file
 #--- Unmute on startup
-apt-get -y -qq install alsa-utils
+#apt-get -y -qq install alsa-utils
 #--- Set volume now
-amixer set Master unmute >/dev/null
-amixer set Master 50% >/dev/null
+#amixer set Master unmute >/dev/null
+#amixer set Master 50% >/dev/null
 
 
 ##### Configuring grub
@@ -531,8 +531,8 @@ sed -i 's#PS1='"'"'.*'"'"'#PS1='"'"'${debian_chroot:+($debian_chroot)}\\[\\033\[
 #--- Apply new aliases
 #source $file   # If using ZSH, will fail
 #--- All other users that are made afterwards
-#file=/etc/skel/.bashrc   #; [ -e $file ] && cp -n $file{,.bkup}
-#sed -i 's/.*force_color_prompt=.*/force_color_prompt=yes/' $file
+file=/etc/skel/.bashrc; [ -e $file ] && cp -n $file{,.bkup}
+sed -i 's/.*force_color_prompt=.*/force_color_prompt=yes/' $file
 
 
 ##### Configuring tmux - all users
@@ -839,8 +839,8 @@ apt-get -y -qq install shutter
 
 
 ##### Installing gdebi ~ gui package installer
-#echo -e "\e[01;32m[+]\e[00m Installing gdebi"
-#apt-get -y -qq install gdebi
+echo -e "\e[01;32m[+]\e[00m Installing gdebi"
+apt-get -y -qq install gdebi
 
 
 ##### Installing psmisc ~ allows for 'killall command' to be used
@@ -1169,7 +1169,7 @@ grep -q '^\[shared\]' $file 2>/dev/null || echo -e '\n[shared]\n   comment = Sha
 #--- Check result
 #service samba restart
 #smbclient -L \\127.0.0.1 -N
-#service samba stop
+service samba stop
 
 
 ##### Setting up SSH
